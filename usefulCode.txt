@@ -1,0 +1,53 @@
+**************************************************************************************
+- Reading Test Cases:
+
+Scanner sc = new Scanner(System.in);
+int numTestCases = sc.nextInt();
+for (int currentTestCase = 1; currentTestCase <= numTestCases; currentTestCase++) {
+	
+}
+
+**************************************************************************************
+- Seperate Digits (better to use a stack instead):
+
+seperateDigits = new LinkedList<Integer>();
+i = secondNum;
+while (i > 0) {
+	seperateDigits.add(i % 10);
+	i /= 10;
+}
+
+**************************************************************************************
+- changing integer to a binary string:
+
+public static String toBinaryString(int n) {
+	return String.format("%32s", Integer.toStringBinary(n).replaceAll(" ", 0));
+}
+
+**************************************************************************************
+- char that is a number to int:
+
+int a=Character.getNumericValue(c);
+**************************************************************************************
+- '?' convention to execute one of two possible lines:
+
+return matched ? "true" : "false";
+
+**************************************************************************************
+- to find if integer is prime:
+
+BigInteger n = new BigInteger("73"); // for example
+System.out.println(n.isProbablePrime(2) ? "prime" : "not prime");
+
+**************************************************************************************
+- To change all of the values in a map:
+
+map.replaceAll((key, value) -> value++); (notice that there is no ';' at the end of the internal
+	expression. You could do it that way or you could use: "return value++;"
+
+**************************************************************************************
+- To initialise an array of lists (array is of a fixed size):
+
+ArrayList<Integer>[] arr = new ArrayList[n];
+
+**************************************************************************************

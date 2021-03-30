@@ -1,0 +1,128 @@
+**************************************************************************************
+General tips:
+
+- DO NOT START THINKING ABOUT AN APPROACH BEFORE YOU STUDY THE GIVEN EXAMPLES AND THEIR SOLUTIONS
+
+- NEVER SUBMIT YOUR CODE BEFORE CREATING YOUR OWN **EXTENSIVE** TEST CASES (EVEN IF YOU THINK IT'S
+	AN EASY PROBLEM).
+
+- prior to solving a question, ask yourself what is the best data structure to use and why it is
+	the best data structure for this particular problem?
+
+- prior to implementing a function, ask yourself whether you can use an existing function rather than
+	writing your own
+
+- if the expected output of a method is to simply print to the screen, there is no need to have a return type
+    (espically when the return type will become complex) i.e: print different sub-sets from a given array.
+    rather than returning a 2D array that contains all the possible sub-sets, everytime you encounter a subset,
+    print it to the screen. This makes the excecution WAY less complex.
+
+- With repeating substrings, if a character exists only once in the string, it cannot be part of a repeating
+    subsequence (i.e: "XBAXB", result: XB(XBXB), we should immediately discard the 'A' character before
+    attempting to find the subsequences)
+
+- Having a working but ugly and ineffecient solution is better than having a half-working clean and effecienct solution (correctness over effeciency/neatnes) 
+
+**************************************************************************************
+Arithmetics:
+
+- Given a number 'N' and wanting to eleminate a particular number from the digit 'i' and produce 
+	two numbers 'A' and 'B', such that A + B = N (i.e: A & B don't contain the number 'i'), we can produce
+	A & B in the following way:
+	- find 'x' & 'y', such that x + y = i
+	- give a padding to A & B such that they have the same # of digits as N
+	- A:
+		- Make A = N then
+		- change every digit that is 'i' to x
+		- change the rest of the digits to 0
+	- B:
+		- Make B = N then
+		- change every digit that is 'i' to y
+		- keep the rest of the digits
+
+- Example: N = 525, eleminate '5' (* is final answer):
+	- x + y = 5
+	- x = 2
+	- y = 3
+	- A = 525
+	-* A = 202
+	- B = 525
+	-* B = 323
+
+**************************************************************************************
+Arrays:
+
+- To print multi-dimensional Arrays in java without knowing there length, use the "Arrays" package from 
+    "java.util.Arrays"
+
+- int[row][column]
+
+**************************************************************************************
+Maps:
+
+- Remeber that we cannot have duplicate keys. Therefore, if you expect to have duplicate
+	keys, create a "Map<String, List<Integer>> map" for example, or use a different
+	approach (all data structures have this condition, so we need to find a different
+	approach to solve the problem)
+- the map.forEach((k,v) -> blah) method cannot be used to update the values stored in the
+	map. Use "replaceAll" instead (see "usefulCode.txt")
+
+**************************************************************************************
+Bitwise Operations:
+
+- Operator Definitions:
+& (bitwise AND)
+| (bitwise OR)
+~ (bitwise NOT)
+^ (bitwise XOR)
+<< (bitwise left shift)
+>> (bitwise right shift)
+>>> (bitwise unsigned right shift)
+&= (bitwise AND assignment)
+|= (bitwise OR assignment)
+^= (bitwise XOR assignment)
+<<= (bitwise left shift and assignment)
+>>= (bitwise right shift and assignment)
+>>>= (bitwise unsigned right shift and assignment)
+
+- Detecting if a given bit number (n) is even or odd:
+	- Preform a bit wise AND operation on n with 1 (i.e: (n & 1)). Since the addition of two even
+	  #s will always yeild ane even # and a # in its bit form can only be even if it has '1' as
+	  its first bit (i.e: '10010100"1"'), doing if ((n & 1) == 1) will check if 'n' is an odd
+	  #.
+
+- Checking if two ints numbers (x & y) have opposite signs:
+	- Preform an XOR on the two binary numbers and if the result < 0 then they have opposite signs
+	  (XOR would result in a positive number if they have the same sign and negative if opposite
+	  signs). Remember performing a bitwise operation on two ints results in an int
+
+- Adding '1' to a binary number (x)
+	- -~x results in adding one to a binary number. This is a result of manipulating the equation
+	  for making x negative (i.e: (-x = ~x + 1))
+
+- Swapping two binary #s (x & y) without using a third number:
+	- Preform the following XOR operations to swap:
+		x = x ^ y;
+		y = x ^ y;
+		x = x ^ y;
+	- the reason this works is due to the fact that (x ^ x = 0). Think about what's happening at
+	  each step and it will make sense.
+
+**************************************************************************************
+Regex:
+
+- useful link for learning about Regex(s) --> https://www.vogella.com/tutorials/JavaRegularExpressions/article.html
+
+- When referring to groups without the use of 'Pattern' & 'Matcher'
+	(i.e: String pattern = "(^[0-9])(\\s+)(\\w{4,8})"; String string = "This is a text"; string.replaceAll(pattern, "$3");)
+	the group (what is inside the brackets) is refered to using "$(the index of the group starting from 1)"
+
+- When referring to groups with the use of 'Pattern' & 'Matcher'
+	(i.e: Pattern pattern = Pattern.compile("<(.+)>([^<>]+)</\\1>"); Matcher matcher = pattern.matcher(line);)
+	the group is refered to using "\\(the index of the group starting from 1)"
+
+- if (matcher.find()) { System.out.println('matcher.group(x)'); }
+	returns the xth group from the previous match (i.e: the groups are the expressions inside of the round brackets)
+
+
+
