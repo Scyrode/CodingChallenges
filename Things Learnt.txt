@@ -124,5 +124,10 @@ Regex:
 - if (matcher.find()) { System.out.println('matcher.group(x)'); }
 	returns the xth group from the previous match (i.e: the groups are the expressions inside of the round brackets)
 
+**************************************************************************************
+BigInteger:
 
+- the 'BigInteger' class is useful when you do not know if the result of an operation will result in a number that will fit inside
+	an int, long, double or not. After completing the operation, use 'bigInteger.toString()' to print what is contained in the
+	BigInteger
 
